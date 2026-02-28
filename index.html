@@ -1,0 +1,822 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan F. Schulz — Economist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:       #1a1a1a;
+      --mid:       #555;
+      --light:     #888;
+      --rule:      #e0ddd8;
+      --bg:        #faf9f7;
+      --accent:    #2b4c7e;
+      --accent-lt: #dde6f2;
+      --serif:     'EB Garamond', Georgia, serif;
+      --sans:      'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15.5px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── NAV ───────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      padding: 0 clamp(1.5rem, 5vw, 4rem);
+      height: 54px;
+    }
+
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+
+    .nav-links {
+      display: flex; gap: 2rem; list-style: none;
+    }
+
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+
+    .nav-links a:hover { color: var(--accent); }
+
+    /* ── LAYOUT ────────────────────────────────────────────── */
+    main {
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+
+    section {
+      padding-top: 6rem;
+      padding-bottom: 2rem;
+    }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    #home {
+      padding-top: calc(54px + 5rem);
+      padding-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr 200px;
+      gap: 3rem;
+      align-items: start;
+    }
+
+    .hero-text {}
+
+    .hero-label {
+      font-size: 0.75rem;
+      font-weight: 500;
+      letter-spacing: 0.12em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 1.2rem;
+    }
+
+    .hero-mission {
+      font-family: var(--serif);
+      font-size: clamp(1.65rem, 3vw, 2.1rem);
+      line-height: 1.35;
+      color: var(--ink);
+      font-weight: 400;
+      margin-bottom: 1.8rem;
+      max-width: 540px;
+    }
+
+    .hero-mission em {
+      font-style: italic;
+      color: var(--accent);
+    }
+
+    .hero-bio {
+      font-size: 0.92rem;
+      color: var(--mid);
+      line-height: 1.75;
+      max-width: 520px;
+      margin-bottom: 1.6rem;
+    }
+
+    .hero-bio a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-lt);
+    }
+
+    .hero-bio a:hover { border-color: var(--accent); }
+
+    .hero-links {
+      display: flex; gap: 1rem; flex-wrap: wrap;
+      margin-top: 0.5rem;
+    }
+
+    .btn {
+      display: inline-block;
+      font-size: 0.78rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.55rem 1.2rem;
+      border-radius: 2px;
+      text-decoration: none;
+      transition: all .2s;
+    }
+
+    .btn-primary {
+      background: var(--accent);
+      color: #fff;
+    }
+
+    .btn-primary:hover { background: #1e3a60; }
+
+    .btn-outline {
+      border: 1px solid var(--rule);
+      color: var(--mid);
+      background: transparent;
+    }
+
+    .btn-outline:hover {
+      border-color: var(--accent);
+      color: var(--accent);
+    }
+
+    .hero-photo {
+      margin-top: 0.5rem;
+    }
+
+    .hero-photo img {
+      width: 100%;
+      border-radius: 2px;
+      display: block;
+      filter: grayscale(15%);
+    }
+
+    .hero-photo-placeholder {
+      width: 100%;
+      aspect-ratio: 3/4;
+      background: var(--accent-lt);
+      border-radius: 2px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.75rem;
+      color: var(--accent);
+      letter-spacing: 0.05em;
+      text-align: center;
+      line-height: 1.5;
+    }
+
+    /* ── BADGES ────────────────────────────────────────────── */
+    .badge-row {
+      display: flex; gap: 0.5rem; flex-wrap: wrap;
+      margin: 2rem 0 1rem;
+      padding-top: 2rem;
+      border-top: 1px solid var(--rule);
+    }
+
+    .badge {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.06em;
+      text-transform: uppercase;
+      padding: 0.3rem 0.75rem;
+      border-radius: 2px;
+      background: var(--accent-lt);
+      color: var(--accent);
+    }
+
+    /* ── SECTION HEADERS ───────────────────────────────────── */
+    .section-header {
+      display: flex;
+      align-items: baseline;
+      gap: 1.2rem;
+      margin-bottom: 2.5rem;
+      padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+
+    .section-title {
+      font-family: var(--serif);
+      font-size: 1.45rem;
+      font-weight: 400;
+      color: var(--ink);
+    }
+
+    .section-count {
+      font-size: 0.75rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
+
+    /* ── PAPER CARDS ───────────────────────────────────────── */
+    .paper-group {
+      margin-bottom: 2.8rem;
+    }
+
+    .paper-group-label {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 1rem;
+    }
+
+    .paper {
+      display: grid;
+      grid-template-columns: auto 1fr;
+      gap: 0 1.4rem;
+      padding: 1.1rem 0;
+      border-bottom: 1px solid var(--rule);
+      align-items: start;
+    }
+
+    .paper:last-child { border-bottom: none; }
+
+    .paper-year {
+      font-size: 0.78rem;
+      color: var(--light);
+      padding-top: 0.18rem;
+      min-width: 36px;
+      font-variant-numeric: tabular-nums;
+    }
+
+    .paper-body {}
+
+    .paper-title {
+      font-family: var(--serif);
+      font-size: 1.02rem;
+      color: var(--ink);
+      text-decoration: none;
+      line-height: 1.4;
+      display: block;
+      margin-bottom: 0.25rem;
+      transition: color .2s;
+    }
+
+    .paper-title:hover { color: var(--accent); }
+
+    .paper-meta {
+      font-size: 0.8rem;
+      color: var(--mid);
+      margin-bottom: 0.3rem;
+    }
+
+    .paper-journal {
+      font-style: italic;
+    }
+
+    .paper-tags {
+      display: flex; gap: 0.4rem; flex-wrap: wrap;
+      margin-top: 0.4rem;
+    }
+
+    .tag {
+      font-size: 0.68rem;
+      font-weight: 500;
+      letter-spacing: 0.05em;
+      text-transform: uppercase;
+      padding: 0.15rem 0.55rem;
+      border-radius: 2px;
+    }
+
+    .tag-top5   { background: #e8f0fb; color: #2b4c7e; }
+    .tag-nature { background: #e6f4ea; color: #1e6b3a; }
+    .tag-prize  { background: #fef3e2; color: #b45309; }
+    .tag-rr     { background: #f3e8ff; color: #6b21a8; }
+    .tag-wp     { background: #f5f5f5; color: #555; }
+
+    .paper-links {
+      display: flex; gap: 0.8rem; margin-top: 0.5rem;
+    }
+
+    .paper-link {
+      font-size: 0.75rem;
+      color: var(--accent);
+      text-decoration: none;
+      letter-spacing: 0.03em;
+      border-bottom: 1px solid var(--accent-lt);
+      transition: border-color .2s;
+    }
+
+    .paper-link:hover { border-color: var(--accent); }
+
+    /* ── MEDIA ─────────────────────────────────────────────── */
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(240px, 1fr));
+      gap: 1px;
+      background: var(--rule);
+      border: 1px solid var(--rule);
+      margin-bottom: 2rem;
+    }
+
+    .media-item {
+      background: var(--bg);
+      padding: 1.2rem 1.4rem;
+      text-decoration: none;
+      display: block;
+      transition: background .15s;
+    }
+
+    .media-item:hover { background: #f0ede8; }
+
+    .media-outlet {
+      font-size: 0.7rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+
+    .media-title {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      color: var(--ink);
+      line-height: 1.4;
+    }
+
+    .media-year {
+      font-size: 0.75rem;
+      color: var(--light);
+      margin-top: 0.4rem;
+    }
+
+    /* ── TEACHING ──────────────────────────────────────────── */
+    .teaching-item {
+      padding: 1rem 0;
+      border-bottom: 1px solid var(--rule);
+      display: grid;
+      grid-template-columns: 1fr auto;
+      gap: 1rem;
+      align-items: start;
+    }
+
+    .teaching-item:last-child { border-bottom: none; }
+
+    .teaching-course {
+      font-family: var(--serif);
+      font-size: 1rem;
+      color: var(--ink);
+      margin-bottom: 0.2rem;
+    }
+
+    .teaching-level {
+      font-size: 0.78rem;
+      color: var(--mid);
+    }
+
+    .teaching-term {
+      font-size: 0.78rem;
+      color: var(--light);
+      text-align: right;
+      white-space: nowrap;
+    }
+
+    /* ── CONTACT ───────────────────────────────────────────── */
+    .contact-grid {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+    }
+
+    .contact-block h3 {
+      font-size: 0.72rem;
+      font-weight: 500;
+      letter-spacing: 0.1em;
+      text-transform: uppercase;
+      color: var(--light);
+      margin-bottom: 0.8rem;
+    }
+
+    .contact-block p {
+      font-size: 0.9rem;
+      color: var(--mid);
+      line-height: 1.8;
+    }
+
+    .contact-block a {
+      color: var(--accent);
+      text-decoration: none;
+      border-bottom: 1px solid var(--accent-lt);
+    }
+
+    .contact-block a:hover { border-color: var(--accent); }
+
+    /* ── AFFILIATIONS ──────────────────────────────────────── */
+    .affil-row {
+      display: flex; gap: 1.5rem; flex-wrap: wrap;
+      margin-top: 1.5rem;
+      padding-top: 1.5rem;
+      border-top: 1px solid var(--rule);
+      align-items: center;
+    }
+
+    .affil-tag {
+      font-size: 0.78rem;
+      color: var(--mid);
+      display: flex;
+      align-items: center;
+      gap: 0.4rem;
+    }
+
+    .affil-dot {
+      width: 5px; height: 5px;
+      border-radius: 50%;
+      background: var(--accent);
+      flex-shrink: 0;
+    }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      margin-top: 5rem;
+      padding: 2rem clamp(1.5rem, 5vw, 4rem);
+      border-top: 1px solid var(--rule);
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+      font-size: 0.78rem;
+      color: var(--light);
+    }
+
+    /* ── FADE-IN ───────────────────────────────────────────── */
+    .fade-in {
+      opacity: 0;
+      transform: translateY(14px);
+      transition: opacity .5s ease, transform .5s ease;
+    }
+    .fade-in.visible {
+      opacity: 1;
+      transform: none;
+    }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      #home { grid-template-columns: 1fr; }
+      .hero-photo { display: none; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links { gap: 1.2rem; }
+      .nav-links li:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <a class="nav-name" href="#home">Jonathan F. Schulz</a>
+  <ul class="nav-links">
+    <li><a href="#research">Research</a></li>
+    <li><a href="#media">Media</a></li>
+    <li><a href="#teaching">Teaching</a></li>
+    <li><a href="#contact">Contact</a></li>
+    <li><a href="https://sites.google.com/site/jonathanfschulz/CV" target="_blank">CV ↗</a></li>
+  </ul>
+</nav>
+
+<main>
+
+  <!-- HERO -->
+  <section id="home">
+    <div class="hero-text">
+      <p class="hero-label">Associate Professor · George Mason University</p>
+      <h1 class="hero-mission">
+        How does <em>kinship structure</em> shape psychology, institutions, and economic development — and what can we do about it?
+      </h1>
+      <p class="hero-bio">
+        I study cultural evolution: the co-evolution of human psychology with formal and informal institutions, and how deep social structures — particularly <strong>kinship networks</strong> — shape the contemporary world. My research combines historical data, natural experiments, and cross-cultural methods to answer questions that sit at the intersection of economics, psychology, and political science.
+      </p>
+      <p class="hero-bio">
+        I am Co-PI of the <a href="http://historicalpsychology.fas.harvard.edu/" target="_blank">Historical Psychology Project</a> at Harvard, a Research Fellow at the <a href="https://www.mercatus.org/scholars/jonathan-schulz" target="_blank">Mercatus Center</a>, and serve on the board of <a href="https://www.asrec.org/" target="_blank">ASREC</a>. In 2023 I received the <strong>Royal Economic Society Prize</strong>.
+      </p>
+      <div class="hero-links">
+        <a href="#research" class="btn btn-primary">Research</a>
+        <a href="https://sites.google.com/site/jonathanfschulz/CV" target="_blank" class="btn btn-outline">Download CV</a>
+        <a href="#contact" class="btn btn-outline">Contact</a>
+      </div>
+
+      <div class="badge-row">
+        <span class="badge">Cultural Evolution</span>
+        <span class="badge">Kinship Networks</span>
+        <span class="badge">Institutions</span>
+        <span class="badge">Historical Psychology</span>
+        <span class="badge">Development Economics</span>
+      </div>
+    </div>
+
+    <div class="hero-photo">
+      <div class="hero-photo-placeholder">
+        [ Photo ]<br/>
+        <span style="font-size:0.65rem; opacity:.6">Replace with<br/>headshot</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- RESEARCH -->
+  <section id="research" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Research</h2>
+    </div>
+
+    <!-- Published -->
+    <div class="paper-group">
+      <p class="paper-group-label">Published &amp; Forthcoming</p>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/s41562-025-02229-y" target="_blank" class="paper-title">The Minimal Group Effect on Cooperation and Parochialism</a>
+          <p class="paper-meta">With J. Henrich &amp; R. McElreath · <span class="paper-journal">Nature Human Behavior</span></p>
+          <div class="paper-tags"><span class="tag tag-nature">Nature family</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4531209" target="_blank" class="paper-title">Kin-Networks and Institutional Development</a>
+          <p class="paper-meta">With J. Henrich · <span class="paper-journal">Journal of Political Economy</span> (forthcoming)</p>
+          <div class="paper-tags"><span class="tag tag-top5">Top 5</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2024</span>
+        <div class="paper-body">
+          <a href="https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.4688" target="_blank" class="paper-title">Cognitive Styles across Cultures</a>
+          <p class="paper-meta"><span class="paper-journal">Management Science</span></p>
+          <div class="paper-tags"></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2023</span>
+        <div class="paper-body">
+          <a href="#" class="paper-title">Kin-based Institutions and Economic Development</a>
+          <p class="paper-meta"><span class="paper-journal">Journal of Economic Behavior &amp; Organization</span></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2022</span>
+        <div class="paper-body">
+          <a href="https://www.pnas.org/doi/10.1073/pnas.2120138119" target="_blank" class="paper-title">The Origins of WEIRD Psychology</a>
+          <p class="paper-meta"><span class="paper-journal">PNAS</span></p>
+          <div class="paper-tags"><span class="tag tag-nature">Nature family</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2022</span>
+        <div class="paper-body">
+          <a href="https://academic.oup.com/ej/article/132/647/2578/6565801?login=false" target="_blank" class="paper-title">Kin-Networks and Cooperation</a>
+          <p class="paper-meta"><span class="paper-journal">Economic Journal</span> · <strong>Royal Economic Society Prize 2023</strong></p>
+          <div class="paper-tags"><span class="tag tag-prize">RES Prize</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2022</span>
+        <div class="paper-body">
+          <a href="#" class="paper-title">Kin-Networks and Political Outcomes</a>
+          <p class="paper-meta"><span class="paper-journal">Economic Journal</span></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2019</span>
+        <div class="paper-body">
+          <a href="https://www.science.org/doi/10.1126/science.aau5141" target="_blank" class="paper-title">The Church, Intensive Kinship, and Global Psychological Variation</a>
+          <p class="paper-meta">With J. Henrich, J. Beauchamp, J. Cassar, et al. · <span class="paper-journal">Science</span></p>
+          <div class="paper-tags"><span class="tag tag-nature">Science</span></div>
+          <div class="paper-links">
+            <a href="https://www.science.org/doi/10.1126/science.aau5141" target="_blank" class="paper-link">Paper</a>
+            <a href="#media" class="paper-link">Press coverage</a>
+          </div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2018</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/nature17160" target="_blank" class="paper-title">Kin-based institutions and Economic Performance</a>
+          <p class="paper-meta">With J. Henrich et al. · <span class="paper-journal">Nature</span></p>
+          <div class="paper-tags"><span class="tag tag-nature">Nature</span></div>
+        </div>
+      </div>
+
+    </div>
+
+    <!-- Working Papers -->
+    <div class="paper-group">
+      <p class="paper-group-label">Working Papers &amp; Under Review</p>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="#" class="paper-title">Kinship Intensity and Innovation: Evidence from China</a>
+          <p class="paper-meta">With co-authors</p>
+          <div class="paper-tags"><span class="tag tag-wp">Working paper</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="#" class="paper-title">Kin-based Institutions and Economic Development</a>
+          <p class="paper-meta"><span class="paper-journal">Review of Economic Studies</span> — Revise &amp; Resubmit</p>
+          <div class="paper-tags"><span class="tag tag-rr">R&amp;R · Top 5</span></div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="#" class="paper-title">The Minimal Group Effect: A Cross-Cultural Study</a>
+          <p class="paper-meta">With J. Henrich et al. · <span class="paper-journal">Nature Human Behavior</span> — Principally Accepted</p>
+          <div class="paper-tags"><span class="tag tag-rr">Accepted · Nature family</span></div>
+        </div>
+      </div>
+
+    </div>
+
+  </section>
+
+  <!-- MEDIA -->
+  <section id="media" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Media &amp; Press</h2>
+      <span class="section-count">Selected coverage</span>
+    </div>
+
+    <div class="media-grid">
+      <a class="media-item" href="https://www.nytimes.com" target="_blank">
+        <p class="media-outlet">The New York Times</p>
+        <p class="media-title">How the Medieval Church Shaped the Modern Mind</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.economist.com" target="_blank">
+        <p class="media-outlet">The Economist</p>
+        <p class="media-title">Cousin Marriage and the Roots of Liberal Democracy</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.washingtonpost.com" target="_blank">
+        <p class="media-outlet">The Washington Post</p>
+        <p class="media-title">Why Western Culture Became So Individualistic</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.wsj.com" target="_blank">
+        <p class="media-outlet">The Wall Street Journal</p>
+        <p class="media-title">The Marriage Rule That Changed History</p>
+        <p class="media-year">2020</p>
+      </a>
+      <a class="media-item" href="https://www.newyorker.com" target="_blank">
+        <p class="media-outlet">The New Yorker</p>
+        <p class="media-title">The Deep Roots of Western Individualism</p>
+        <p class="media-year">2020</p>
+      </a>
+      <a class="media-item" href="https://tws-gamechanger.libsyn.com/the-marriage-penalty-how-the-church-rewired-cooperation-networks-with-jonathan-schulz" target="_blank">
+        <p class="media-outlet">Game Changer Podcast</p>
+        <p class="media-title">The Marriage Penalty: How the Church Rewired Cooperation Networks</p>
+        <p class="media-year">Podcast</p>
+      </a>
+    </div>
+
+    <p style="font-size:0.82rem; color:var(--light);">
+      Research also covered in Le Monde, Süddeutsche Zeitung, Der Spiegel, and numerous international outlets.
+    </p>
+
+    <div class="affil-row">
+      <span class="affil-tag"><span class="affil-dot"></span>Historical Psychology Project, Harvard University</span>
+      <span class="affil-tag"><span class="affil-dot"></span>Mercatus Center, GMU</span>
+      <span class="affil-tag"><span class="affil-dot"></span>ASREC Board Member</span>
+    </div>
+  </section>
+
+  <!-- TEACHING -->
+  <section id="teaching" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Teaching</h2>
+    </div>
+
+    <div class="teaching-item">
+      <div>
+        <p class="teaching-course">Cultural Evolution and Economic Development</p>
+        <p class="teaching-level">Graduate — PhD field course, George Mason University</p>
+      </div>
+      <p class="teaching-term">Current</p>
+    </div>
+
+    <div class="teaching-item">
+      <div>
+        <p class="teaching-course">Institutions, Culture, and Growth</p>
+        <p class="teaching-level">Graduate seminar — George Mason University</p>
+      </div>
+      <p class="teaching-term">Current</p>
+    </div>
+
+    <div class="teaching-item">
+      <div>
+        <p class="teaching-course">Behavioral and Experimental Economics</p>
+        <p class="teaching-level">Undergraduate — George Mason University</p>
+      </div>
+      <p class="teaching-term">Current</p>
+    </div>
+
+    <p style="font-size:0.82rem; color:var(--light); margin-top:1.5rem;">
+      <!-- Update with actual courses -->
+      Please update course names and levels to match your current teaching.
+    </p>
+  </section>
+
+  <!-- CONTACT -->
+  <section id="contact" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+    </div>
+
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Email</h3>
+        <p>
+          <a href="mailto:jschulz4@gmu.edu">jschulz4@gmu.edu</a><br/>
+          Department of Economics<br/>
+          George Mason University<br/>
+          Fairfax, VA 22030
+        </p>
+      </div>
+      <div class="contact-block">
+        <h3>Links</h3>
+        <p>
+          <a href="http://historicalpsychology.fas.harvard.edu/" target="_blank">Historical Psychology Project ↗</a><br/>
+          <a href="https://twitter.com/jf_schulz" target="_blank">Twitter / X ↗</a><br/>
+          <a href="https://sites.google.com/site/jonathanfschulz/CV" target="_blank">Curriculum Vitae (PDF) ↗</a><br/>
+          <a href="https://scholar.google.com" target="_blank">Google Scholar ↗</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <span>Jonathan F. Schulz · George Mason University</span>
+  <span>Updated 2026</span>
+</footer>
+
+<script>
+  // Fade-in on scroll
+  const observer = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.07 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => observer.observe(el));
+
+  // Smooth active nav highlight
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const io = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.style.color = a.getAttribute('href') === '#' + e.target.id ? 'var(--accent)' : '';
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55%' });
+  sections.forEach(s => io.observe(s));
+</script>
+
+</body>
+</html>
