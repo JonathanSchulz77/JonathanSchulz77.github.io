@@ -75,7 +75,7 @@
 
     /* ── LAYOUT ────────────────────────────────────────────── */
     main { }
-    section { padding-top: 5.5rem; padding-bottom: 2rem; }
+    section { padding-top: 4rem; padding-bottom: 2rem; }
 
     /* ── HERO ──────────────────────────────────────────────── */
     #home {
@@ -262,7 +262,7 @@
     .media-grid {
       display: grid;
       grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
-      gap: 1px; background: var(--rule);
+      gap: 1px; background: var(--bg);
       border: 1px solid var(--rule); margin-bottom: 2.2rem;
     }
     .media-item {
@@ -345,7 +345,7 @@
 
       <!-- Option 2: two buttons, different weight -->
       <div class="hero-cta">
-        <a class="btn btn-primary" href="./CV_Schulz.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+        <a class="btn btn-secondary" href="./CV_Schulz.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a class="btn btn-secondary" href="https://scholar.google.com/citations?user=FKVoiw0AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">Google Scholar</a>
       </div>
 
@@ -810,4 +810,5 @@
   sections.forEach(s => navObserver.observe(s));
 </script>
 </body>
+
 </html>
