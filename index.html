@@ -1,0 +1,813 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Jonathan F. Schulz — Economist</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=EB+Garamond:ital,wght@0,400;0,500;1,400&family=DM+Sans:wght@300;400;500&display=swap" rel="stylesheet" />
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+
+    :root {
+      --ink:        #1a1a1a;
+      --mid:        #555;
+      --light:      #888;
+      --rule:       #e0ddd8;
+      --bg:         #faf9f7;
+      --accent:     #2b4c7e;
+      --accent-lt:  #dde6f2;
+      --serif:      'EB Garamond', Georgia, serif;
+      --sans:       'DM Sans', system-ui, sans-serif;
+    }
+
+    html { scroll-behavior: smooth; }
+
+    body {
+      font-family: var(--sans);
+      background: var(--bg);
+      color: var(--ink);
+      font-size: 15.5px;
+      line-height: 1.7;
+      -webkit-font-smoothing: antialiased;
+    }
+
+    /* ── SHARED CONTAINER ──────────────────────────────────── */
+    .container{
+      max-width: 860px;
+      margin: 0 auto;
+      padding: 0 clamp(1.5rem, 5vw, 3rem);
+    }
+
+    /* ── NAV ───────────────────────────────────────────────── */
+    nav {
+      position: fixed; top: 0; left: 0; right: 0;
+      background: var(--bg);
+      border-bottom: 1px solid var(--rule);
+      z-index: 100;
+      height: 54px;
+    }
+    .nav-inner{
+      height: 54px;
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+    }
+    .nav-name {
+      font-family: var(--serif);
+      font-size: 1.05rem;
+      letter-spacing: 0.01em;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .nav-links { display: flex; gap: 2rem; list-style: none; }
+    .nav-links a {
+      font-size: 0.82rem;
+      font-weight: 400;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      color: var(--mid);
+      text-decoration: none;
+      transition: color .2s;
+    }
+    .nav-links a:hover, .nav-links a.active { color: var(--accent); }
+
+    /* ── LAYOUT ────────────────────────────────────────────── */
+    main { }
+    section { padding-top: 5.5rem; padding-bottom: 2rem; }
+
+    /* ── HERO ──────────────────────────────────────────────── */
+    #home {
+      padding-top: calc(54px + 4.5rem);
+      padding-bottom: 3rem;
+      display: grid;
+      grid-template-columns: 1fr clamp(140px, 18vw, 190px);
+      gap: 3rem;
+      align-items: start;
+    }
+    .hero-mission {
+      font-family: var(--serif);
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
+      line-height: 1.35; color: var(--ink);
+      font-weight: 400; margin-bottom: 1.6rem;
+    }
+    .hero-bio {
+      font-size: 0.92rem; color: var(--mid);
+      line-height: 1.75; margin-bottom: 1rem;
+    }
+    .hero-bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lt); }
+    .hero-bio a:hover { border-color: var(--accent); }
+
+    /* ── HERO CTAs (Option 2) ──────────────────────────────── */
+    .hero-cta{
+      margin-top: 1.2rem;
+      display: flex;
+      gap: 0.75rem;
+      flex-wrap: wrap;
+    }
+    .btn{
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 0.82rem;
+      letter-spacing: 0.04em;
+      text-decoration: none;
+      padding: 0.5rem 0.8rem;
+      border-radius: 3px;
+      border: 1px solid var(--accent);
+      transition: background .15s, color .15s, border-color .15s;
+      white-space: nowrap;
+    }
+    .btn-primary{
+      background: var(--accent);
+      color: #fff;
+      border-color: var(--accent);
+    }
+    .btn-primary:hover{ background: #243f69; }
+    .btn-secondary{
+      background: transparent;
+      color: var(--accent);
+      border-color: var(--accent-lt);
+    }
+    .btn-secondary:hover{ border-color: var(--accent); }
+
+    /* ── HERO PHOTO sizing ─────────────────────────────────── */
+    .hero-photo-wrap{ justify-self: end; }
+    .hero-photo{
+      width: 100%;
+      max-width: 190px;
+      border-radius: 2px;
+      display: block;
+      filter: grayscale(10%);
+    }
+
+    /* ── SECTION HEADER ────────────────────────────────────── */
+    .section-header {
+      display: flex; align-items: baseline; gap: 1.2rem;
+      margin-bottom: 2rem; padding-bottom: 0.75rem;
+      border-bottom: 1px solid var(--rule);
+    }
+    .section-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
+    .section-count { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+
+    /* ── PAPER GROUP ───────────────────────────────────────── */
+    .paper-group { margin-bottom: 2.2rem; }
+    .paper-group-label {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--light); margin-bottom: 0.8rem;
+    }
+
+    /* ── PAPER ITEM ────────────────────────────────────────── */
+    .paper {
+      display: grid; grid-template-columns: 40px 1fr;
+      gap: 0 1.2rem; padding: 0.7rem 0;
+      border-bottom: 1px solid var(--rule); align-items: start;
+    }
+    .paper:last-child { border-bottom: none; }
+    .paper-year {
+      font-size: 0.78rem; color: var(--light);
+      padding-top: 0.2rem; font-variant-numeric: tabular-nums;
+    }
+    .paper-title {
+      font-family: var(--serif); font-size: 1.02rem;
+      color: var(--ink); text-decoration: none;
+      line-height: 1.4; display: inline;
+      transition: color .2s;
+    }
+    .paper-title:hover { color: var(--accent); }
+    .paper-meta { font-size: 0.82rem; color: var(--mid); margin-top: 0.15rem; }
+    .paper-meta em { font-style: italic; }
+
+    /* ── TAG SQUARES — inline after title ─────────────────── */
+    .paper-tags-inline {
+      display: inline;
+      margin-left: 0.4rem;
+    }
+    .tag {
+      display: inline-block;
+      font-size: 0.65rem; font-weight: 500;
+      letter-spacing: 0.06em; text-transform: uppercase;
+      padding: 0.18rem 0.5rem; border-radius: 2px;
+      text-decoration: none; cursor: default;
+      transition: opacity .15s;
+      vertical-align: middle;
+      position: relative; top: -1px;
+    }
+    .tag:hover { opacity: 0.75; }
+    a.tag { cursor: pointer; }
+
+    .tag-top5    { background: #dde6f2; color: #2b4c7e; }
+    .tag-nature  { background: #e6f4ea; color: #1e6b3a; }
+    .tag-science { background: #e6f4ea; color: #1e6b3a; }
+    .tag-prize   { background: #fef3e2; color: #b45309; }
+    .tag-rr      { background: #f3e8ff; color: #6b21a8; }
+    .tag-wp      { background: #f5f5f5; color: #666; }
+    .tag-accepted{ background: #e0f7f0; color: #0a6b4e; }
+    .tag-media   { background: #fff0e6; color: #b94a00; }
+    .tag-data    { background: #e8f5e9; color: #2e7d32; }
+    .tag-preprint{ background: #f0f4ff; color: #3949ab; }
+
+    /* ── ABSTRACT TOGGLE ───────────────────────────────────── */
+    .abstract-toggle {
+      font-size: 0.75rem; color: var(--accent);
+      background: none; border: none; cursor: pointer;
+      padding: 0; letter-spacing: 0.03em;
+      margin-top: 0.3rem; text-decoration: none;
+      display: inline-block;
+    }
+    .abstract-toggle:hover { text-decoration: underline; }
+    .abstract-body {
+      display: none; margin-top: 0.6rem;
+      font-size: 0.85rem; color: var(--mid);
+      line-height: 1.75; padding: 0.8rem 1rem;
+      background: #f3f0eb; border-radius: 2px;
+      border-left: 2px solid var(--rule);
+    }
+    .abstract-body.open { display: block; }
+
+    /* ── MEDIA SECTION ─────────────────────────────────────── */
+    .podcast-feature {
+      display: grid; grid-template-columns: auto 1fr;
+      gap: 1.5rem; align-items: center;
+      padding: 1.6rem; background: #f3f0eb;
+      border-radius: 3px; border-left: 3px solid var(--accent);
+      margin-bottom: 2.5rem; text-decoration: none;
+      transition: background .15s;
+    }
+    .podcast-feature:hover { background: #ece8e1; }
+    .podcast-icon {
+      width: 54px; height: 54px; border-radius: 50%;
+      background: var(--accent); display: flex;
+      align-items: center; justify-content: center; flex-shrink: 0;
+    }
+    .podcast-icon svg { fill: white; width: 22px; height: 22px; }
+    .podcast-label {
+      font-size: 0.7rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.3rem;
+    }
+    .podcast-title {
+      font-family: var(--serif); font-size: 1.05rem;
+      color: var(--ink); line-height: 1.4; margin-bottom: 0.25rem;
+    }
+    .podcast-desc { font-size: 0.82rem; color: var(--mid); }
+
+    .media-subhead {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--light); margin-bottom: 1rem; margin-top: 0.5rem;
+    }
+    .media-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fill, minmax(230px, 1fr));
+      gap: 1px; background: var(--rule);
+      border: 1px solid var(--rule); margin-bottom: 2.2rem;
+    }
+    .media-item {
+      background: var(--bg); padding: 1.1rem 1.3rem;
+      text-decoration: none; display: block; transition: background .15s;
+    }
+    .media-item:hover { background: #f0ede8; }
+    .media-outlet {
+      font-size: 0.68rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--accent); margin-bottom: 0.35rem;
+    }
+    .media-title { font-family: var(--serif); font-size: 0.9rem; color: var(--ink); line-height: 1.4; }
+    .media-year { font-size: 0.72rem; color: var(--light); margin-top: 0.35rem; }
+
+    /* ── CONTACT ───────────────────────────────────────────── */
+    .contact-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 2.5rem; }
+    .contact-block h3 {
+      font-size: 0.72rem; font-weight: 500;
+      letter-spacing: 0.1em; text-transform: uppercase;
+      color: var(--light); margin-bottom: 0.8rem;
+    }
+    .contact-block p { font-size: 0.9rem; color: var(--mid); line-height: 1.9; }
+    .contact-block a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lt); }
+    .contact-block a:hover { border-color: var(--accent); }
+
+    /* ── FOOTER ────────────────────────────────────────────── */
+    footer {
+      margin-top: 5rem; padding: 2rem 0;
+      border-top: 1px solid var(--rule);
+      display: flex; justify-content: space-between;
+      align-items: center; font-size: 0.78rem; color: var(--light);
+    }
+
+    /* ── FADE-IN ───────────────────────────────────────────── */
+    .fade-in { opacity: 0; transform: translateY(14px); transition: opacity .5s ease, transform .5s ease; }
+    .fade-in.visible { opacity: 1; transform: none; }
+
+    /* ── RESPONSIVE ────────────────────────────────────────── */
+    @media (max-width: 640px) {
+      #home { grid-template-columns: 1fr; gap: 1.75rem; }
+      .hero-photo-wrap{ justify-self: start; }
+      .hero-photo{ max-width: 160px; }
+      .contact-grid { grid-template-columns: 1fr; }
+      .nav-links li:nth-child(n+4) { display: none; }
+    }
+  </style>
+</head>
+<body>
+
+<!-- NAV -->
+<nav>
+  <div class="container nav-inner">
+    <a class="nav-name" href="#home">Jonathan F. Schulz</a>
+    <ul class="nav-links">
+      <li><a href="#research">Research</a></li>
+      <li><a href="#media">Media</a></li>
+      <li><a href="#contact">Contact</a></li>
+    </ul>
+  </div>
+</nav>
+
+<main class="container">
+
+  <!-- ══ HERO ════════════════════════════════════════════════ -->
+  <section id="home">
+    <div>
+      <h1 class="hero-mission">Why societies cooperate, innovate, and prosper</h1>
+
+      <p class="hero-bio">
+        Using historical and cross-cultural evidence, I study how kinship and social structure shape institutions, psychology, and economic development.
+      </p>
+
+      <p class="hero-bio">
+        I am Associate Professor of Economics at George Mason University and Co-PI of the
+        <a href="http://historicalpsychology.fas.harvard.edu/" target="_blank" rel="noopener noreferrer">Historical Psychology Project</a>
+        at Harvard. In 2023 I received the
+        <a href="https://res.org.uk/2022-royal-economic-society-prize/" target="_blank" rel="noopener noreferrer">Royal Economic Society Prize</a>.
+      </p>
+
+      <!-- Option 2: two buttons, different weight -->
+      <div class="hero-cta">
+        <a class="btn btn-primary" href="./CV_Schulz.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
+        <a class="btn btn-secondary" href="https://scholar.google.com/citations?user=FKVoiw0AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">Google Scholar</a>
+      </div>
+
+    </div>
+
+    <div class="hero-photo-wrap">
+      <img class="hero-photo" src="./JFSchulz.jpg" alt="Jonathan F. Schulz" />
+    </div>
+  </section>
+
+  <!-- ══ RESEARCH ════════════════════════════════════════════ -->
+  <section id="research" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Research</h2>
+    </div>
+
+    <!-- PUBLISHED & FORTHCOMING -->
+    <div class="paper-group">
+      <p class="paper-group-label">Published &amp; Forthcoming</p>
+
+      <div class="paper">
+        <span class="paper-year">2026</span>
+        <div class="paper-body">
+          <a href="https://www.mgt.tum.de/fileadmin/mgt.tum.de/faculty_and_research/mppe/45_manuscript.pdf" target="_blank" rel="noopener noreferrer" class="paper-title">Culture and Gender Differences in Honesty</a>
+          <p class="paper-meta">With Caroline Graf and Andreas Pondorfer · <em>Economic Journal</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://www-journals-uchicago-edu.mutex.gmu.edu/doi/10.1086/739323" target="_blank" rel="noopener noreferrer" class="paper-title">How Cultural Diversity Drives Innovation: Surnames and Patents in U.S. History</a>
+          <p class="paper-meta">With Max Posch and Joseph Henrich · <em>Journal of Political Economy</em> &nbsp;<a href="#jpe-media" class="tag tag-media">media</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/s41562-025-02229-y" target="_blank" rel="noopener noreferrer" class="paper-title">The Chronospatial Revolution in Psychology</a>
+          <p class="paper-meta">With M. Atari and J. Henrich · <em>Nature Human Behavior</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/s41562-025-02286-3" target="_blank" rel="noopener noreferrer" class="paper-title">Guilt- and Shame-Driven Prosociality Across Societies</a>
+          <p class="paper-meta">With Catherine Molho, Ivan Soraperra, and Shaul Shalvi · <em>Nature Human Behavior</em> &nbsp;<a href="#guilt-media" class="tag tag-media">media</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://royalsocietypublishing.org/rstb/article/380/1940/1/363347/Land-rights-institutions-and-the-scope-of" target="_blank" rel="noopener noreferrer" class="paper-title">Land Rights Institutions and the Scope of Cooperation</a>
+          <p class="paper-meta">With Marco Fabbri and Daniele Nosenzo · <em>Proceedings of the Royal Society B</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://osf.io/preprints/psyarxiv/at4xc" target="_blank" rel="noopener noreferrer" class="paper-title">The Science of Honesty: A Review and Research Agenda</a>
+          <p class="paper-meta">Collaboration led by S. Shalvi · <em>Advances in Experimental Social Psychology</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2024</span>
+        <div class="paper-body">
+          <a href="https://pubsonline.informs.org/doi/abs/10.1287/mnsc.2023.4688" target="_blank" rel="noopener noreferrer" class="paper-title">Strategic Competition and Self-Confidence</a>
+          <p class="paper-meta">With S. Brilon, S. Grassi, and M. Grieder · <em>Management Science</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2023</span>
+        <div class="paper-body">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167268123003232" target="_blank" rel="noopener noreferrer" class="paper-title">The Behavioural Mechanisms of Voluntary Cooperation across Culturally Diverse Societies</a>
+          <p class="paper-meta">With T. Weber, B. Beranek, F. Lambarraa-Lehnhardt, and S. Gächter · <em>Journal of Economic Behavior and Organization</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2022</span>
+        <div class="paper-body">
+          <a href="https://www.pnas.org/doi/10.1073/pnas.2120138119" target="_blank" rel="noopener noreferrer" class="paper-title">Social Norms and Dishonesty across Societies</a>
+          <p class="paper-meta">With D. Aycinena, L. Rentschler, and B. Beranek · <em>PNAS</em> &nbsp;<a href="#pnas-media" class="tag tag-media">media</a> <a href="https://osf.io/65bqr/" target="_blank" rel="noopener noreferrer" class="tag tag-data">data</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://academic.oup.com/ej/article/132/647/2578/6565801?login=false" target="_blank" rel="noopener noreferrer" class="paper-title">Kin Networks and Institutional Development</a>
+          <p class="paper-meta"><em>Economic Journal</em> &nbsp;<a href="https://res.org.uk/2022-royal-economic-society-prize/" target="_blank" rel="noopener noreferrer" class="tag tag-prize">RES Prize 2023</a> <a href="https://zenodo.org/record/6373189#.YrC3b3bMI2w" target="_blank" rel="noopener noreferrer" class="tag tag-data">data</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://www.sciencedirect.com/science/article/pii/S2214804322000465" target="_blank" rel="noopener noreferrer" class="paper-title">Selection into Experiments: New Evidence on the Role of Preferences, Cognition, and Recruitment Protocols</a>
+          <p class="paper-meta">With P. Thiemann, U. Sunde, and C. Thoeni · <em>Journal of Behavioral and Experimental Economics</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2020</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/s41586-020-1988-3" target="_blank" rel="noopener noreferrer" class="paper-title">Reply to: Life and Death Decisions of Autonomous Vehicles</a>
+          <p class="paper-meta">With A. Edmond, S. Dsouza, R. Kim, J. Henrich, A. Shariff, J. Bonnefon, and I. Rahwan · <em>Nature</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2019</span>
+        <div class="paper-body">
+          <a href="https://science.sciencemag.org/content/366/6466/eaau5141" target="_blank" rel="noopener noreferrer" class="paper-title">The Church, Intensive Kinship, and Global Psychological Variation</a>
+          <p class="paper-meta">With D. Bahrami-Rad, J. Beauchamp, and J. Henrich · <em>Science</em> &nbsp;<a href="#science-media" class="tag tag-media">media</a> <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.2rbnzs7hs" target="_blank" rel="noopener noreferrer" class="tag tag-data">data</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=3184537" target="_blank" rel="noopener noreferrer" class="paper-title">Time Pressure Increases Honesty in a Sender-Receiver Deception Game</a>
+          <p class="paper-meta">With V. Capraro and D. Rand · <em>Journal of Behavioral and Experimental Economics</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2018</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank" rel="noopener noreferrer" class="paper-title">The Moral Machine Experiment</a>
+          <p class="paper-meta">With A. Edmond, S. Dsouza, R. Kim, J. Henrich, A. Shariff, J. Bonnefon, and I. Rahwan · <em>Nature</em> &nbsp;<a href="#moral-media" class="tag tag-media">media</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://www.sciencedirect.com/science/article/pii/S2214804318301575" target="_blank" rel="noopener noreferrer" class="paper-title">Nudging Generosity: Choice Architecture and Cognitive Factors in Charitable Giving</a>
+          <p class="paper-meta">With P. Thiemann and C. Thöni · <em>Journal of Behavioral and Experimental Economics</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2016</span>
+        <div class="paper-body">
+          <a href="https://www.nature.com/articles/nature17160" target="_blank" rel="noopener noreferrer" class="paper-title">Intrinsic Honesty and the Prevalence of Rule Violations across Societies</a>
+          <p class="paper-meta">With S. Gächter · <em>Nature</em> &nbsp;<a href="#honesty-media" class="tag tag-media">media</a></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2015</span>
+        <div class="paper-body">
+          <a href="http://journals.plos.org/plosone/article?id=10.1371/journal.pone.0145126" target="_blank" rel="noopener noreferrer" class="paper-title">Overconfidence and Career Choice</a>
+          <p class="paper-meta">With C. Thöni · <em>PLoS ONE</em></p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2014</span>
+        <div class="paper-body">
+          <a href="https://www.sciencedirect.com/science/article/pii/S0167487012000931" target="_blank" rel="noopener noreferrer" class="paper-title">Affect and Fairness: Dictator Games under Cognitive Load</a>
+          <p class="paper-meta">With U. Fischbacher, C. Thöni, and V. Utikal · <em>Journal of Economic Psychology</em></p>
+        </div>
+      </div>
+
+    </div><!-- /published -->
+
+    <!-- ACCEPTED PRE-REGISTERED -->
+    <div class="paper-group">
+      <p class="paper-group-label">Accepted Pre-registered Reports</p>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <a href="https://psysciacc.org/psa-008-project-information/" target="_blank" rel="noopener noreferrer" class="paper-title">The Cultural Prevalence of the Minimal Group Effect and its Relationship with Two Forms of Real-World Bias</a>
+          <p class="paper-meta">Proposing author (PSA) with Kate Yang and Yarrow Dunham · <em>Nature Human Behavior</em>, principally accepted</p>
+        </div>
+      </div>
+    </div>
+
+    <!-- WORKING PAPERS -->
+    <div class="paper-group">
+      <p class="paper-group-label">Working Papers &amp; Under Review</p>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="https://osf.io/preprints/psyarxiv/27u94_v1" target="_blank" rel="noopener noreferrer" class="paper-title">Psychological Change and Kinship Intensity in China over Two Millennia</a>
+          <p class="paper-meta">With Yuqi Chen, Mohammad Atari, Edward Slingerland, Ze Hong, Xiaokang Fu, Hongsu Wang, Peter Bol, and Joseph Henrich</p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2025</span>
+        <div class="paper-body">
+          <a href="https://osf.io/preprints/psyarxiv/vxcrj_v1" target="_blank" rel="noopener noreferrer" class="paper-title">WEIRD Questions: Diversifying Conceptual Sampling</a>
+          <p class="paper-meta">With Mohammad Atari, Ivan Kroupin, Liora Morhayim, Damián E. Blasi, and Joseph Henrich</p>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year">2022</span>
+        <div class="paper-body">
+          <a href="https://papers.ssrn.com/sol3/papers.cfm?abstract_id=4200629" target="_blank" rel="noopener noreferrer" class="paper-title">Kin-based Institutions and Economic Development</a>
+          <p class="paper-meta">With Duman Bahrami-Rad, Jonathan Beauchamp, and Joseph Henrich · <em>Review of Economic Studies</em>, Revise &amp; Resubmit</p>
+        </div>
+      </div>
+
+    </div><!-- /working papers -->
+
+    <!-- WORK IN PROGRESS -->
+    <div class="paper-group">
+      <p class="paper-group-label">Work in Progress</p>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <span class="paper-title" style="cursor:default;">The Complementarity of Good Institutions and Voluntary Cooperation: Experimental Evidence from 43 Societies</span>
+          <p class="paper-meta">With S. Gächter and C. Thöni</p>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">+ abstract</button>
+          <div class="abstract-body">We study the relationship between formal institutions and voluntary cooperation across 43 societies using a large-scale experimental design. We find evidence that good formal institutions and voluntary cooperation are complementary — societies with stronger institutions also exhibit higher baseline cooperation, and the two reinforce each other in producing public goods.</div>
+        </div>
+      </div>
+
+      <div class="paper">
+        <span class="paper-year"></span>
+        <div class="paper-body">
+          <span class="paper-title" style="cursor:default;">Intuitive Cooperation in Children across Societies</span>
+          <p class="paper-meta">With Y. Dunham, E. Mandelbaum, K. McAuliffe, and D. Rand</p>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">+ abstract</button>
+          <div class="abstract-body">We investigate whether the tendency to cooperate intuitively — without deliberation — varies systematically across societies and how this relates to cultural and institutional variation. Using a cross-cultural sample of children, we test whether cooperative intuitions are universal or culturally shaped.</div>
+        </div>
+      </div>
+
+    </div>
+
+  </section><!-- /research -->
+
+  <!-- ══ MEDIA ════════════════════════════════════════════════ -->
+  <section id="media" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Media &amp; Press</h2>
+      <span class="section-count">Selected coverage</span>
+    </div>
+
+    <!-- PODCAST FEATURE -->
+    <a class="podcast-feature" href="https://tws-gamechanger.libsyn.com/the-marriage-penalty-how-the-church-rewired-cooperation-networks-with-jonathan-schulz" target="_blank" rel="noopener noreferrer">
+      <div class="podcast-icon">
+        <svg viewBox="0 0 24 24" xmlns="http://www.w3.org/2000/svg">
+          <path d="M12 3a9 9 0 1 0 0 18A9 9 0 0 0 12 3zm-1.5 5.25l6 3.75-6 3.75V8.25z"/>
+        </svg>
+      </div>
+      <div>
+        <p class="podcast-label">Podcast · Game Changer</p>
+        <p class="podcast-title">The Marriage Penalty: How the Church Rewired Cooperation Networks</p>
+        <p class="podcast-desc">A conversation on kinship, cooperation, and the deep roots of Western psychology — listen now ↗</p>
+      </div>
+    </a>
+
+    <!-- JPE -->
+    <p id="jpe-media" class="media-subhead">Cultural Diversity and Innovation — <em>Journal of Political Economy</em></p>
+    <div class="media-grid">
+      <a class="media-item" href="https://www.youtube.com/watch?v=RpTBGgrG5aE&t=263s" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Santa Fe Institute · YouTube</p>
+        <p class="media-title">Talk: Cultural Diversity and Innovation</p>
+        <p class="media-year">2024</p>
+      </a>
+      <a class="media-item" href="https://www.forbes.com/sites/stuartanderson/2023/10/18/immigration-and-diverse-populace-made-america-an-innovation-superpower/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Forbes</p>
+        <p class="media-title">Immigration and Diverse Populace Made America an Innovation Superpower</p>
+        <p class="media-year">2023</p>
+      </a>
+      <a class="media-item" href="https://marginalrevolution.com/marginalrevolution/2025/11/how-cultural-diversity-drives-innovation.html" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Marginal Revolution</p>
+        <p class="media-title">How Cultural Diversity Drives Innovation</p>
+        <p class="media-year">2025</p>
+      </a>
+    </div>
+
+    <!-- Science 2019 -->
+    <p id="science-media" class="media-subhead">The Church, Intensive Kinship &amp; Global Psychological Variation — <em>Science</em> 2019</p>
+    <div class="media-grid">
+      <a class="media-item" href="https://www.washingtonpost.com/religion/2019/11/07/new-science-studys-theory-medieval-catholicism-explains-difference-between-cultures-this-day/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Washington Post</p>
+        <p class="media-title">How Medieval Catholicism Explains Differences Between Cultures</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.economist.com/graphic-detail/2019/11/23/medieval-catholicism-nudged-europe-towards-democracy-and-development" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">The Economist</p>
+        <p class="media-title">Medieval Catholicism Nudged Europe Towards Democracy</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.nytimes.com/2019/12/21/opinion/sunday/christian-past-secular-present.html" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">New York Times</p>
+        <p class="media-title">Christian Past, Secular Present</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.npr.org/sections/goatsandsoda/2019/11/07/777276474/western-individualism-may-have-roots-in-the-medieval-churchs-obsession-with-ince" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">NPR</p>
+        <p class="media-title">Western Individualism May Have Roots in the Medieval Church</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.scientificamerican.com/article/western-individualism-arose-from-incest-taboo/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Scientific American</p>
+        <p class="media-title">Western Individualism Arose from Incest Taboo</p>
+        <p class="media-year">2019</p>
+      </a>
+      <a class="media-item" href="https://www.faz.net/aktuell/feuilleton/was-die-kirche-mit-unserem-charakter-zu-tun-hat-16473953.html" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Frankfurter Allgemeine Zeitung</p>
+        <p class="media-title">Was die Kirche mit unserem Charakter zu tun hat</p>
+        <p class="media-year">2019</p>
+      </a>
+    </div>
+
+    <!-- Moral Machine 2018 -->
+    <p id="moral-media" class="media-subhead">The Moral Machine Experiment — <em>Nature</em> 2018</p>
+    <div class="media-grid">
+      <a class="media-item" href="https://www.economist.com/science-and-technology/2018/10/27/whom-should-self-driving-cars-protect-in-an-accident" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">The Economist</p>
+        <p class="media-title">Whom Should Self-Driving Cars Protect in an Accident?</p>
+        <p class="media-year">2018</p>
+      </a>
+      <a class="media-item" href="https://www.newyorker.com/science/elements/a-study-on-driverless-car-ethics-offers-a-troubling-look-into-our-values" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">The New Yorker</p>
+        <p class="media-title">A Study on Driverless-Car Ethics Offers a Troubling Look into Our Values</p>
+        <p class="media-year">2018</p>
+      </a>
+      <a class="media-item" href="https://www.washingtonpost.com/science/2018/10/24/self-driving-cars-will-have-decide-who-should-live-who-should-die-heres-who-humans-would-kill/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Washington Post</p>
+        <p class="media-title">Self-Driving Cars Will Have to Decide Who Should Live and Who Should Die</p>
+        <p class="media-year">2018</p>
+      </a>
+      <a class="media-item" href="https://www.bbc.com/news/technology-45991093" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">BBC</p>
+        <p class="media-title">Driverless Car Dilemmas Reveal Value Placed on Humans Worldwide</p>
+        <p class="media-year">2018</p>
+      </a>
+      <a class="media-item" href="https://www.technologyreview.com/2018/10/24/139313/a-global-ethics-study-aims-to-help-ai-solve-the-self-driving-trolley-problem/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">MIT Technology Review</p>
+        <p class="media-title">Should a Self-Driving Car Kill the Baby or the Grandma?</p>
+        <p class="media-year">2018</p>
+      </a>
+      <a class="media-item" href="https://www.theguardian.com/technology/2018/oct/24/who-should-ai-kill-in-a-driverless-car-crash-it-depends-who-you-ask" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">The Guardian</p>
+        <p class="media-title">Who Should AI Kill in a Driverless Car Crash?</p>
+        <p class="media-year">2018</p>
+      </a>
+    </div>
+
+    <!-- Honesty 2016 -->
+    <p id="honesty-media" class="media-subhead">Intrinsic Honesty and Rule Violations — <em>Nature</em> 2016</p>
+    <div class="media-grid">
+      <a class="media-item" href="https://www.wsj.com/articles/the-global-appeal-of-rationalizing-little-lies-1466614303" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Wall Street Journal</p>
+        <p class="media-title">The Global Appeal of Rationalizing Little Lies</p>
+        <p class="media-year">2016</p>
+      </a>
+      <a class="media-item" href="https://www.theatlantic.com/science/archive/2016/03/corruption-honesty/472779/" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">The Atlantic</p>
+        <p class="media-title">Corruption Corrupts</p>
+        <p class="media-year">2016</p>
+      </a>
+      <a class="media-item" href="https://www.spiegel.de/wissenschaft/mensch/psychologie-in-korrupten-staaten-wird-mehr-geschummelt-a-1081467.html#ref=rss" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Der Spiegel</p>
+        <p class="media-title">In korrupten Staaten wird mehr geschummelt</p>
+        <p class="media-year">2016</p>
+      </a>
+    </div>
+
+    <!-- Guilt/Shame NHB -->
+    <p id="guilt-media" class="media-subhead">Guilt- and Shame-Driven Prosociality — <em>Nature Human Behavior</em> 2025</p>
+    <div class="media-grid">
+      <a class="media-item" href="https://www.tagesschau.de/wissen/psychologie-emotionen-verhalten-100.html" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">ARD Tagesschau</p>
+        <p class="media-title">Wie prosoziales Handeln gefördert wird</p>
+        <p class="media-year">2025</p>
+      </a>
+      <a class="media-item" href="https://www.br.de/nachrichten/wissen/studie-wie-prosoziales-handeln-gefoerdert-wird,Uuz9dfq" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">BR</p>
+        <p class="media-title">Studie: Wie prosoziales Handeln gefördert wird</p>
+        <p class="media-year">2025</p>
+      </a>
+    </div>
+
+    <!-- PNAS -->
+    <p id="pnas-media" class="media-subhead">Social Norms and Dishonesty — <em>PNAS</em> 2022</p>
+    <div class="media-grid">
+      <a class="media-item" href="https://marginalrevolution.com/marginalrevolution/2022/07/they-modeled-this.html" target="_blank" rel="noopener noreferrer">
+        <p class="media-outlet">Marginal Revolution</p>
+        <p class="media-title">They Modeled This</p>
+        <p class="media-year">2022</p>
+      </a>
+    </div>
+
+  </section>
+
+  <!-- ══ CONTACT ══════════════════════════════════════════════ -->
+  <section id="contact" class="fade-in">
+    <div class="section-header">
+      <h2 class="section-title">Contact</h2>
+    </div>
+    <div class="contact-grid">
+      <div class="contact-block">
+        <h3>Academic Address</h3>
+        <p>
+          <a href="mailto:jschulz4@gmu.edu">jschulz4@gmu.edu</a><br/>
+          Department of Economics<br/>
+          George Mason University<br/>
+          Fairfax, VA 22030, USA
+        </p>
+      </div>
+      <div class="contact-block">
+        <h3>Links</h3>
+        <p>
+          <a href="https://twitter.com/jf_schulz" target="_blank" rel="noopener noreferrer">Twitter / X @jf_schulz ↗</a><br/>
+          <a href="http://historicalpsychology.fas.harvard.edu/" target="_blank" rel="noopener noreferrer">Historical Psychology Project ↗</a><br/>
+          <a href="https://scholar.google.com/citations?user=FKVoiw0AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">Google Scholar ↗</a><br/>
+          <a href="https://www.mercatus.org/scholars/jonathan-schulz" target="_blank" rel="noopener noreferrer">Mercatus Center ↗</a>
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <footer>
+    <span>Jonathan F. Schulz · George Mason University · <a href="mailto:jschulz4@gmu.edu" style="color:var(--light); text-decoration:none; border-bottom:1px solid var(--rule);">jschulz4@gmu.edu</a></span>
+    <span>Updated February 2026</span>
+  </footer>
+
+</main>
+
+<script>
+  function toggleAbstract(btn) {
+    const body = btn.nextElementSibling;
+    const isOpen = body.classList.toggle('open');
+    btn.textContent = isOpen ? '− abstract' : '+ abstract';
+  }
+
+  const fadeObserver = new IntersectionObserver(
+    entries => entries.forEach(e => { if (e.isIntersecting) e.target.classList.add('visible'); }),
+    { threshold: 0.05 }
+  );
+  document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
+
+  const sections = document.querySelectorAll('section[id]');
+  const navLinks = document.querySelectorAll('.nav-links a');
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55%' });
+  sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
