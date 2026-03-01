@@ -84,7 +84,7 @@
     }
     .hero-mission {
       font-family: var(--serif);
-      font-size: clamp(1.6rem, 3vw, 2.05rem);
+      font-size: clamp(1.4rem, 2.2vw, 1.75rem);
       line-height: 1.35; color: var(--ink);
       font-weight: 400; margin-bottom: 1.8rem; max-width: 540px;
     }
@@ -93,6 +93,18 @@
       font-size: 0.92rem; color: var(--mid);
       line-height: 1.75; max-width: 520px; margin-bottom: 1rem;
     }
+    .hero-links-plain {
+  font-size: 0.82rem;
+  letter-spacing: 0.06em;
+  color: var(--mid);
+  margin-top: 1.2rem;
+}
+.hero-links-plain a {
+  color: var(--accent);
+  text-decoration: none;
+  border-bottom: 1px solid var(--accent-lt);
+}
+.hero-links-plain a:hover { border-color: var(--accent); }
     .hero-bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lt); }
     .hero-bio a:hover { border-color: var(--accent); }
     .hero-links { display: flex; gap: 1rem; flex-wrap: wrap; margin-top: 1.2rem; }
@@ -366,7 +378,11 @@
       <p class="hero-bio">
         I am Associate Professor of Economics at George Mason University and Co-PI of the <a href="http://historicalpsychology.fas.harvard.edu/" target="_blank">Historical Psychology Project</a> at Harvard. In 2023 I received the Royal Economic Society Prize.
       </p>
-
+<p class="hero-links-plain">
+  <a href="./cv.pdf" target="_blank">CV</a> &nbsp;·&nbsp;
+  <a href="YOUR_SCHOLAR_URL" target="_blank">Google Scholar</a> &nbsp;·&nbsp;
+  <a href="mailto:jschulz4@gmu.edu">Contact</a>
+</p>
     </div>
     <div>
      <img src="./JFSchulz.jpg" alt="Jonathan F. Schulz" 
