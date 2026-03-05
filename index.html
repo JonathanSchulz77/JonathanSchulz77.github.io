@@ -166,6 +166,14 @@
   display: block;
   filter: grayscale(10%);
 }
+    .hero-photo-ring::after{
+  content: "";
+  position: absolute;
+  inset: -8px;                 /* ring sits slightly outside */
+  border-radius: 50%;
+  border: 5px solid #2aa6a6;   /* ring color */
+  pointer-events: none;
+}
 
     /* ── SECTION HEADER ────────────────────────────────────── */
     .section-header {
@@ -330,7 +338,7 @@
     @media (max-width: 640px) {
       #home { grid-template-columns: 1fr; gap: 1.75rem; }
       .hero-photo-wrap{ justify-self: start; }
-      .hero-photo{ max-width: 160px; }
+      .hero-photo-ring{ width: 180px; height: 180px; }  /* adjust */
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links li:nth-child(n+4) { display: none; }
     }
@@ -838,6 +846,7 @@
 </body>
 
 </html>
+
 
 
 
