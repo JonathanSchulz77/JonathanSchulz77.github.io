@@ -14,6 +14,7 @@
   gtag('config', 'G-3L64GLJ9NM');
 </script>
   
+
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jonathan F. Schulz — Economist</title>
@@ -95,7 +96,7 @@
       padding-top: calc(54px + 4.5rem);
       padding-bottom: 3rem;
       display: grid;
-      grid-template-columns: 1fr clamp(140px, 18vw, 190px);
+      grid-template-columns: 1fr clamp(130px, 16vw, 160px);
       gap: 3rem;
       align-items: start;
     }
@@ -112,7 +113,7 @@
     .hero-bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lt); }
     .hero-bio a:hover { border-color: var(--accent); }
 
-    /* ── HERO CTAs (Option 2) ──────────────────────────────── */
+    /* ── HERO CTAs ─────────────────────────────────────────── */
     .hero-cta{
       margin-top: 1.2rem;
       display: flex;
@@ -145,35 +146,38 @@
     }
     .btn-secondary:hover{ border-color: var(--accent); }
 
-/* ── HERO PHOTO sizing (round + larger) ─────────────────── */
-.hero-photo-wrap{ justify-self: end; }
+    /* ── HERO PHOTO ─────────────────────────────────────────── */
+    .hero-photo-wrap {
+      justify-self: end;
+      align-self: start;
+      /* Sits in the second grid column — no overflow possible */
+    }
 
-/* controls the overall size */
-.hero-photo-ring{
-  width: 240px;          /* <- make larger/smaller here */
-  height: 240px;         /* keep equal to width */
-  border-radius: 50%;
-  overflow: hidden;      /* ensures circle crop */
-  position: relative;
-}
+    .hero-photo-ring {
+      width: 160px;
+      height: 160px;
+      border-radius: 50%;
+      overflow: hidden;
+      position: relative;
+    }
 
-/* the image itself */
-.hero-photo{
-  width: 100%;
-  height: 100%;
-  object-fit: cover;     /* crop to fill circle */
-  object-position: 50% 35%; /* tweak if needed */
-  display: block;
-  filter: grayscale(10%);
-}
-    .hero-photo-ring::after{
-  content: "";
-  position: absolute;
-  inset: -8px;                 /* ring sits slightly outside */
-  border-radius: 50%;
-  border: 5px solid #2aa6a6;   /* ring color */
-  pointer-events: none;
-}
+    .hero-photo {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      object-position: 50% 35%;
+      display: block;
+      filter: grayscale(10%);
+    }
+
+    .hero-photo-ring::after {
+      content: "";
+      position: absolute;
+      inset: -6px;
+      border-radius: 50%;
+      border: 4px solid #2aa6a6;
+      pointer-events: none;
+    }
 
     /* ── SECTION HEADER ────────────────────────────────────── */
     .section-header {
@@ -213,7 +217,7 @@
     .paper-meta { font-size: 0.82rem; color: var(--mid); margin-top: 0.15rem; }
     .paper-meta em { font-style: italic; }
 
-    /* ── TAG SQUARES — inline after title ─────────────────── */
+    /* ── TAG SQUARES ───────────────────────────────────────── */
     .paper-tags-inline {
       display: inline;
       margin-left: 0.4rem;
@@ -337,8 +341,8 @@
     /* ── RESPONSIVE ────────────────────────────────────────── */
     @media (max-width: 640px) {
       #home { grid-template-columns: 1fr; gap: 1.75rem; }
-      .hero-photo-wrap{ justify-self: start; }
-      .hero-photo-ring{ width: 180px; height: 180px; }  /* adjust */
+      .hero-photo-wrap { justify-self: start; }
+      .hero-photo-ring { width: 120px; height: 120px; }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links li:nth-child(n+4) { display: none; }
     }
@@ -376,19 +380,20 @@
         <a href="https://res.org.uk/2022-royal-economic-society-prize/" target="_blank" rel="noopener noreferrer">Royal Economic Society Prize</a> for my work on kinship and political institutions.
       </p>
 
-      <!-- Option 2: two buttons, different weight -->
       <div class="hero-cta">
         <a class="btn btn-secondary" href="https://jonathanfschulz.com/CV_Schulz.pdf" target="_blank" rel="noopener noreferrer">CV (PDF)</a>
         <a class="btn btn-secondary" href="https://scholar.google.com/citations?user=FKVoiw0AAAAJ&hl=de" target="_blank" rel="noopener noreferrer">Google Scholar</a>
       </div>
-
     </div>
 
-<div class="hero-photo-wrap">
-  <div class="hero-photo-ring">
-    <img class="hero-photo" src="./Jonathan-Schulz.webp" alt="Jonathan F. Schulz" />
-  </div>
-</div>
+    <!-- Photo inside the grid — second column -->
+    <div class="hero-photo-wrap">
+      <div class="hero-photo-ring">
+        <img class="hero-photo" src="./Jonathan-Schulz.webp" alt="Jonathan F. Schulz" />
+      </div>
+    </div>
+
+  </section><!-- /#home -->
 
   <!-- ══ RESEARCH ════════════════════════════════════════════ -->
   <section id="research" class="fade-in">
@@ -667,7 +672,7 @@
     </div>
 
     <!-- Guilt/Shame NHB -->
-    <p id="guilt-media" class="media-subhead">Guilt- and Shame-Driven Prosociality </p>
+    <p id="guilt-media" class="media-subhead">Guilt- and Shame-Driven Prosociality</p>
     <div class="media-grid">
       <a class="media-item" href="https://www.tagesschau.de/wissen/psychologie-emotionen-verhalten-100.html" target="_blank" rel="noopener noreferrer">
         <p class="media-outlet">ARD Tagesschau</p>
@@ -682,7 +687,7 @@
     </div>
 
     <!-- Science 2019 -->
-    <p id="science-media" class="media-subhead"> Why Europe: Kinship, Insitutions &amp; and Development</p>
+    <p id="science-media" class="media-subhead">Why Europe: Kinship, Institutions &amp; Development</p>
     <div class="media-grid">
       <a class="media-item" href="https://www.washingtonpost.com/religion/2019/11/07/new-science-studys-theory-medieval-catholicism-explains-difference-between-cultures-this-day/" target="_blank" rel="noopener noreferrer">
         <p class="media-outlet">Washington Post</p>
@@ -781,7 +786,7 @@
       </a>
     </div>
 
-  </section>
+  </section><!-- /media -->
 
   <!-- ══ CONTACT ══════════════════════════════════════════════ -->
   <section id="contact" class="fade-in">
@@ -808,7 +813,7 @@
         </p>
       </div>
     </div>
-  </section>
+  </section><!-- /contact -->
 
   <footer>
     <span>Jonathan F. Schulz · George Mason University · <a href="mailto:jschulz4@gmu.edu" style="color:var(--light); text-decoration:none; border-bottom:1px solid var(--rule);">jschulz4@gmu.edu</a></span>
@@ -844,14 +849,4 @@
   sections.forEach(s => navObserver.observe(s));
 </script>
 </body>
-
 </html>
-
-
-
-
-
-
-
-
-
