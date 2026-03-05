@@ -14,7 +14,6 @@
   gtag('config', 'G-3L64GLJ9NM');
 </script>
   
-
   <meta charset="UTF-8" />
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <title>Jonathan F. Schulz — Economist</title>
@@ -96,7 +95,7 @@
       padding-top: calc(54px + 4.5rem);
       padding-bottom: 3rem;
       display: grid;
-      grid-template-columns: 1fr clamp(130px, 16vw, 160px);
+      grid-template-columns: 1fr clamp(160px, 20vw, 200px);
       gap: 3rem;
       align-items: start;
     }
@@ -154,8 +153,8 @@
     }
 
     .hero-photo-ring {
-      width: 160px;
-      height: 160px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       overflow: hidden;
       position: relative;
@@ -342,7 +341,7 @@
     @media (max-width: 640px) {
       #home { grid-template-columns: 1fr; gap: 1.75rem; }
       .hero-photo-wrap { justify-self: start; }
-      .hero-photo-ring { width: 120px; height: 120px; }
+      .hero-photo-ring { width: 150px; height: 150px; }
       .contact-grid { grid-template-columns: 1fr; }
       .nav-links li:nth-child(n+4) { display: none; }
     }
@@ -797,7 +796,7 @@
       <div class="contact-block">
         <h3>Academic Address</h3>
         <p>
-          <a href="mailto:jschulz4@gmu.edu">jschulz4@gmu.edu</a><br/>
+          <a href="/cdn-cgi/l/email-protection#117b627279647d6b2551767c643f747564"><span class="__cf_email__" data-cfemail="a7cdd4c4cfd2cbdd93e7c0cad289c2c3d2">[email&#160;protected]</span></a><br/>
           Department of Economics<br/>
           George Mason University<br/>
           Fairfax, VA 22030, USA
@@ -816,13 +815,13 @@
   </section><!-- /contact -->
 
   <footer>
-    <span>Jonathan F. Schulz · George Mason University · <a href="mailto:jschulz4@gmu.edu" style="color:var(--light); text-decoration:none; border-bottom:1px solid var(--rule);">jschulz4@gmu.edu</a></span>
+    <span>Jonathan F. Schulz · George Mason University · <a href="/cdn-cgi/l/email-protection#a5cfd6c6cdd0c9df91e5c2c8d08bc0c1d0" style="color:var(--light); text-decoration:none; border-bottom:1px solid var(--rule);"><span class="__cf_email__" data-cfemail="a1cbd2c2c9d4cddb95e1c6ccd48fc4c5d4">[email&#160;protected]</span></a></span>
     <span>Updated February 2026</span>
   </footer>
 
 </main>
 
-<script>
+<script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
   function toggleAbstract(btn) {
     const body = btn.nextElementSibling;
     const isOpen = body.classList.toggle('open');
@@ -837,16 +836,4 @@
 
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const navObserver = new IntersectionObserver(entries => {
-    entries.forEach(e => {
-      if (e.isIntersecting) {
-        navLinks.forEach(a => {
-          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
-        });
-      }
-    });
-  }, { rootMargin: '-40% 0px -55%' });
-  sections.forEach(s => navObserver.observe(s));
-</script>
-</body>
-</html>
+  const nav
