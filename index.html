@@ -95,7 +95,7 @@
       padding-top: calc(54px + 4.5rem);
       padding-bottom: 3rem;
       display: grid;
-      grid-template-columns: 1fr clamp(160px, 20vw, 220px);
+      grid-template-columns: 1fr clamp(160px, 20vw, 200px);
       gap: 3rem;
       align-items: start;
     }
@@ -153,8 +153,8 @@
     }
 
     .hero-photo-ring {
-      width: 220px;
-      height: 220px;
+      width: 200px;
+      height: 200px;
       border-radius: 50%;
       overflow: hidden;
       position: relative;
@@ -834,7 +834,21 @@
   );
   document.querySelectorAll('.fade-in').forEach(el => fadeObserver.observe(el));
 
+
   const sections = document.querySelectorAll('section[id]');
   const navLinks = document.querySelectorAll('.nav-links a');
-  const nav
+  const navObserver = new IntersectionObserver(entries => {
+    entries.forEach(e => {
+      if (e.isIntersecting) {
+        navLinks.forEach(a => {
+          a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+        });
+      }
+    });
+  }, { rootMargin: '-40% 0px -55%' });
+  sections.forEach(s => navObserver.observe(s));
+</script>
+</body>
+</html>
 
+  
