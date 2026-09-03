@@ -151,12 +151,14 @@
     /* ── HERO ──────────────────────────────────────────────── */
     #home {
       padding-top: calc(54px + 4.5rem);
-      padding-bottom: 3rem;
+      padding-bottom: 1.25rem;
       display: grid;
       grid-template-columns: 1fr clamp(160px, 20vw, 210px);
       gap: 3rem;
       align-items: start;
     }
+    #research { padding-top: 1.75rem; }
+
     .hero-mission {
       font-family: var(--serif);
       font-size: clamp(1.4rem, 2.2vw, 1.75rem);
@@ -169,6 +171,7 @@
     }
     .hero-bio a { color: var(--accent); text-decoration: none; border-bottom: 1px solid var(--accent-lt); }
     .hero-bio a:hover { border-color: var(--accent); }
+
 
     /* ── HERO CTAs ─────────────────────────────────────────── */
     .hero-cta{
@@ -244,6 +247,148 @@
     }
     .section-title { font-family: var(--serif); font-size: 1.45rem; font-weight: 400; }
     .section-count { font-size: 0.75rem; letter-spacing: 0.08em; text-transform: uppercase; color: var(--light); }
+
+    /* ── FEATURED RESEARCH ─────────────────────────────────── */
+    .selected-articles-heading {
+      font-family: var(--serif);
+      font-size: 1.18rem;
+      font-weight: 400;
+      margin: -0.4rem 0 1.15rem;
+    }
+    .featured-grid {
+      display: grid;
+      grid-template-columns: repeat(2, minmax(0, 1fr));
+      gap: 0.9rem;
+      margin-bottom: 2.8rem;
+    }
+    .featured-paper {
+      border: 1px solid var(--rule);
+      background: #fff;
+      padding: 1.15rem 1.2rem 1.05rem;
+      border-radius: 3px;
+      min-width: 0;
+    }
+    .featured-paper.featured-lead {
+      grid-column: span 2;
+      padding: 1.35rem 1.45rem 1.2rem;
+      border-top: 3px solid var(--accent);
+    }
+    .featured-kicker {
+      font-size: 0.68rem;
+      letter-spacing: 0.09em;
+      text-transform: uppercase;
+      color: var(--accent);
+      margin-bottom: 0.4rem;
+    }
+    .featured-title {
+      font-family: var(--serif);
+      font-size: 1.08rem;
+      line-height: 1.35;
+      color: var(--ink);
+      text-decoration: none;
+    }
+    .featured-lead .featured-title { font-size: 1.25rem; }
+    .featured-kicker-row {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.45rem;
+      align-items: center;
+      margin-bottom: 0.4rem;
+    }
+    .featured-kicker-row .featured-kicker { margin-bottom: 0; }
+    .prize-badge {
+      display: inline-block;
+      font-size: 0.61rem;
+      font-weight: 500;
+      letter-spacing: 0.065em;
+      text-transform: uppercase;
+      color: #9a5707;
+      text-decoration: none;
+      white-space: nowrap;
+    }
+    .prize-badge:hover { text-decoration: underline; }
+    .featured-title:hover { color: var(--accent); }
+    .featured-meta {
+      font-size: 0.78rem;
+      line-height: 1.55;
+      color: var(--mid);
+      margin-top: 0.35rem;
+    }
+    .featured-teaser {
+      font-size: 0.84rem;
+      line-height: 1.65;
+      color: var(--mid);
+      margin-top: 0.7rem;
+    }
+    .featured-quote {
+      font-family: var(--serif);
+      font-size: 0.92rem;
+      line-height: 1.5;
+      color: #454545;
+      margin-top: 0.7rem;
+    }
+    .featured-quote q { font-style: italic; }
+    .featured-quote-attribution {
+      font-family: var(--sans);
+      font-size: 0.68rem;
+      color: var(--light);
+      margin-left: 0.3rem;
+      white-space: normal;
+    }
+    .featured-quote-attribution a {
+      color: inherit;
+      text-decoration: none;
+    }
+    .featured-quote-attribution a:hover { color: var(--accent); }
+    .featured-links {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.6rem;
+      margin-top: 0.75rem;
+      align-items: center;
+    }
+    .featured-links a,
+    .featured-detail-toggle {
+      font-size: 0.72rem;
+      color: var(--accent);
+      text-decoration: none;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      letter-spacing: 0.025em;
+    }
+    .featured-links a:hover,
+    .featured-detail-toggle:hover { text-decoration: underline; }
+    .featured-detail {
+      display: none;
+      margin-top: 0.8rem;
+      padding-top: 0.75rem;
+      border-top: 1px solid var(--rule);
+      font-size: 0.82rem;
+      line-height: 1.7;
+      color: var(--mid);
+    }
+    .featured-detail.open { display: block; }
+    .complete-record-label {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 1rem;
+      margin: 0 0 1rem;
+      padding-top: 0.4rem;
+    }
+    .complete-record-label h3 {
+      font-family: var(--serif);
+      font-size: 1.15rem;
+      font-weight: 400;
+    }
+    .complete-record-label span {
+      font-size: 0.7rem;
+      letter-spacing: 0.08em;
+      text-transform: uppercase;
+      color: var(--light);
+    }
 
     /* ── PAPER GROUP ───────────────────────────────────────── */
     .paper-group { margin-bottom: 2.2rem; }
@@ -401,6 +546,8 @@
       .hero-photo-wrap { justify-self: start; }
       .hero-photo-ring { width: 150px; height: 150px; }
       .contact-grid { grid-template-columns: 1fr; }
+      .featured-grid { grid-template-columns: 1fr; }
+      .featured-paper.featured-lead { grid-column: span 1; }
       .nav-links li:nth-child(n+4) { display: none; }
     }
   </style>
@@ -458,6 +605,88 @@
       <h2 class="section-title">Research</h2>
     </div>
 
+    <h3 class="selected-articles-heading">Selected articles</h3>
+
+    <div class="featured-grid">
+
+      <article class="featured-paper featured-lead">
+        <div class="featured-kicker-row">
+          <p class="featured-kicker">Economic Journal · 2022</p>
+          <a class="prize-badge" href="https://res.org.uk/2022-royal-economic-society-prize/" target="_blank" rel="noopener noreferrer" title="Best paper published in The Economic Journal in 2022">RES Prize</a>
+        </div>
+        <a class="featured-title" href="https://academic.oup.com/ej/article/132/647/2578/6565801" target="_blank" rel="noopener noreferrer">Kin Networks and Institutional Development</a>
+        <p class="featured-teaser">On the Church, intensive kin networks, and the formation of participatory institutions and democracy in Europe.</p>
+        <p class="featured-quote"><q>One of the best papers on the subject.</q><span class="featured-quote-attribution">— <a href="https://conversationswithtyler.com/episodes/joel-mokyr/" target="_blank" rel="noopener noreferrer">Joel Mokyr</a></span></p>
+        <div class="featured-links">
+          <a href="https://academic.oup.com/ej/article/132/647/2578/6565801" target="_blank" rel="noopener noreferrer">paper ↗</a>
+          <a href="https://zenodo.org/record/6373189" target="_blank" rel="noopener noreferrer">data ↗</a>
+          <button class="featured-detail-toggle" onclick="toggleFeatured(this)">+ more</button>
+        </div>
+        <div class="featured-detail">Strong kin networks are associated with weaker democratic traditions and lower contemporary democracy. Historical evidence points to a mechanism: the Western Church's marriage regulations weakened clan-based kinship, while European regions with weaker kin networks were more likely to develop medieval communes and other participatory institutions. The paper received the 2022 Royal Economic Society Prize for the best paper published in <em>The Economic Journal</em>.</div>
+      </article>
+
+      <article class="featured-paper">
+        <p class="featured-kicker">Science · 2019</p>
+        <a class="featured-title" href="https://www.science.org/doi/10.1126/science.aau5141" target="_blank" rel="noopener noreferrer">The Church, Intensive Kinship, and Global Psychological Variation</a>
+        <p class="featured-meta">With Duman Bahrami-Rad, Jonathan Beauchamp, and Joseph Henrich</p>
+        <p class="featured-teaser">On how the medieval Church reshaped family organization—and, over centuries, Western psychology.</p>
+        <div class="featured-links">
+          <a href="https://www.science.org/doi/10.1126/science.aau5141" target="_blank" rel="noopener noreferrer">paper ↗</a>
+          <a href="https://datadryad.org/stash/dataset/doi:10.5061/dryad.2rbnzs7hs" target="_blank" rel="noopener noreferrer">data ↗</a>
+          <a href="#science-media">media ↓</a>
+          <button class="featured-detail-toggle" onclick="toggleFeatured(this)">+ more</button>
+        </div>
+        <div class="featured-detail">Across countries, European regions, and individuals from different cultural backgrounds, longer exposure to the medieval Western Church and weaker intensive kinship are associated with greater individualism and impersonal prosociality and with less conformity. The paper links these patterns to the Church's historical transformation of marriage and family organization.</div>
+      </article>
+
+      <article class="featured-paper">
+        <p class="featured-kicker">Journal of Political Economy · 2026</p>
+        <a class="featured-title" href="https://www.journals.uchicago.edu/doi/10.1086/739323" target="_blank" rel="noopener noreferrer">How Cultural Diversity Drives Innovation: Surnames and Patents in U.S. History</a>
+        <p class="featured-meta">With Max Posch and Joseph Henrich</p>
+        <p class="featured-teaser">On why culturally diverse places can be more innovative: new combinations of ideas, skills, and breakthrough inventions in U.S. history.</p>
+        <div class="featured-links">
+          <a href="https://www.journals.uchicago.edu/doi/10.1086/739323" target="_blank" rel="noopener noreferrer">paper ↗</a>
+          <a href="https://doi.org/10.7910/DVN/EXE7CK" target="_blank" rel="noopener noreferrer">data ↗</a>
+          <a href="#jpe-media">media ↓</a>
+          <button class="featured-detail-toggle" onclick="toggleFeatured(this)">+ more</button>
+        </div>
+        <div class="featured-detail">Using U.S. data from 1850–1940 and quasi-random variation in counties' surname composition generated by historical immigration, we find that greater cultural diversity increased patenting and breakthrough innovation. The evidence points to a broader pool of ideas and skills for recombination and to social interactions that facilitate idea sharing.</div>
+      </article>
+
+      <article class="featured-paper">
+        <p class="featured-kicker">Nature · 2016</p>
+        <a class="featured-title" href="https://www.nature.com/articles/nature17160" target="_blank" rel="noopener noreferrer">Intrinsic Honesty and the Prevalence of Rule Violations across Societies</a>
+        <p class="featured-meta">With Simon Gächter</p>
+        <p class="featured-teaser">On whether living in societies with widespread rule-breaking changes people's willingness to be honest—even when cheating cannot be detected.</p>
+        <div class="featured-links">
+          <a href="https://www.nature.com/articles/nature17160" target="_blank" rel="noopener noreferrer">paper ↗</a>
+          <a href="https://doi.org/10.5061/dryad.9k358" target="_blank" rel="noopener noreferrer">data ↗</a>
+          <a href="#honesty-media">media ↓</a>
+          <button class="featured-detail-toggle" onclick="toggleFeatured(this)">+ more</button>
+        </div>
+        <div class="featured-detail">In experiments with 2,568 participants across 23 countries, subject pools from societies with more corruption, tax evasion, and political fraud exhibited lower intrinsic honesty. The results are consistent with cultural co-evolution between institutions, social environments, and individual values.</div>
+      </article>
+
+      <article class="featured-paper">
+        <p class="featured-kicker">Nature · 2018</p>
+        <a class="featured-title" href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank" rel="noopener noreferrer">The Moral Machine Experiment</a>
+        <p class="featured-meta">With Edmond Awad, Sohan Dsouza, Richard Kim, Joseph Henrich, Azim Shariff, Jean-François Bonnefon, and Iyad Rahwan</p>
+        <p class="featured-teaser">On the moral choices societies want autonomous vehicles to make—and how those choices differ across cultures.</p>
+        <div class="featured-links">
+          <a href="https://www.nature.com/articles/s41586-018-0637-6" target="_blank" rel="noopener noreferrer">paper ↗</a>
+          <a href="#moral-media">media ↓</a>
+          <button class="featured-detail-toggle" onclick="toggleFeatured(this)">+ more</button>
+        </div>
+        <div class="featured-detail">Using nearly 40 million decisions from participants in 233 countries and territories, the study maps broad moral preferences in unavoidable accident scenarios and documents substantial cross-cultural variation in how those preferences are weighted.</div>
+      </article>
+
+    </div>
+
+    <div class="complete-record-label">
+      <h3>Publications &amp; current research</h3>
+      <span>Published · Working papers · Work in progress</span>
+    </div>
+
     <!-- PUBLISHED & FORTHCOMING -->
     <div class="paper-group">
       <p class="paper-group-label">Published &amp; Forthcoming</p>
@@ -474,7 +703,7 @@
         <span class="paper-year"></span>
         <div class="paper-body">
           <a href="https://www.journals.uchicago.edu/doi/10.1086/739323" target="_blank" rel="noopener noreferrer" class="paper-title">How Cultural Diversity Drives Innovation: Surnames and Patents in U.S. History</a>
-          <p class="paper-meta">With Max Posch and Joseph Henrich · <em>Journal of Political Economy</em> &nbsp;<a href="#jpe-media" class="tag tag-media">media</a></p>
+          <p class="paper-meta">With Max Posch and Joseph Henrich · <em>Journal of Political Economy</em> &nbsp;<a href="#jpe-media" class="tag tag-media">media</a> <a href="https://doi.org/10.7910/DVN/EXE7CK" target="_blank" rel="noopener noreferrer" class="tag tag-data">data</a></p>
         </div>
       </div>
 
@@ -614,6 +843,14 @@
         </div>
       </div>
 
+      <div class="paper">
+        <span class="paper-year">2012</span>
+        <div class="paper-body">
+          <a href="https://onlinelibrary.wiley.com/doi/10.1111/j.1468-2516.2012.00384.x" target="_blank" rel="noopener noreferrer" class="paper-title">Die Auswirkungen bedarfsabhängiger Leistungen: Ergänzungsleistungen in der Schweiz</a>
+          <p class="paper-meta">With Monika Bütler, Lukas Inderbitzin, and Stefan Staubli · <em>Perspektiven der Wirtschaftspolitik</em></p>
+        </div>
+      </div>
+
     </div><!-- /published -->
 
     <!-- ACCEPTED PRE-REGISTERED -->
@@ -632,6 +869,14 @@
     <!-- WORKING PAPERS -->
     <div class="paper-group">
       <p class="paper-group-label">Working Papers &amp; Under Review</p>
+
+      <div class="paper">
+        <span class="paper-year">2026</span>
+        <div class="paper-body">
+          <a href="https://www.monash.edu/__data/assets/pdf_file/0010/3682432/Draft_religion_norms_CDES_Pondorfer-1.pdf" target="_blank" rel="noopener noreferrer" class="paper-title">Exposure to Supernatural Agents and the Role of Social Norms: Evidence from a Lab-in-the-Field Experiment in Bangladesh</a>
+          <p class="paper-meta">With Firoz Ahmed and Andreas Pondorfer &nbsp;<a href="https://www.monash.edu/__data/assets/pdf_file/0010/3682432/Draft_religion_norms_CDES_Pondorfer-1.pdf" target="_blank" rel="noopener noreferrer" class="tag tag-preprint">public draft</a></p>
+        </div>
+      </div>
 
       <div class="paper">
         <span class="paper-year">2025</span>
@@ -664,12 +909,20 @@
       <p class="paper-group-label">Work in Progress</p>
 
       <div class="paper">
+        <span class="paper-year">2026</span>
+        <div class="paper-body">
+          <a href="https://www.aeaweb.org/conference/2026/program/1462?q=eNqrVipOLS7OzM8LqSxIVbKqhnGVrJQMlWp1lJITS1LT84sqgXwlHaXE4uL8ZAizJLUoF8JKSYTKlmTmpkJYZZmp5SDDigoKgAKmBiCTChLTQbIWSrVcMFnwXCJn" target="_blank" rel="noopener noreferrer" class="paper-title">The Complementarity of Good Institutions and Voluntary Cooperation: Experimental Evidence from 43 Societies</a>
+          <p class="paper-meta">With Simon Gächter and Christian Thöni &nbsp;<a href="https://www.aeaweb.org/conference/2026/program/1462?q=eNqrVipOLS7OzM8LqSxIVbKqhnGVrJQMlWp1lJITS1LT84sqgXwlHaXE4uL8ZAizJLUoF8JKSYTKlmTmpkJYZZmp5SDDigoKgAKmBiCTChLTQbIWSrVcMFnwXCJn" target="_blank" rel="noopener noreferrer" class="tag tag-wp">AEA abstract</a></p>
+          <button class="abstract-toggle" onclick="toggleAbstract(this)">+ abstract</button>
+          <div class="abstract-body">Across more than 40 societies, voluntary cooperation in public-goods experiments is positively associated with institutional quality. Laboratory experiments provide complementary causal evidence: experiencing well-functioning institutions subsequently increases voluntary cooperation even after formal enforcement is removed, with cooperative beliefs emerging as an important behavioral channel.</div>
+        </div>
+      </div>
+
+      <div class="paper">
         <span class="paper-year"></span>
         <div class="paper-body">
-          <span class="paper-title" style="cursor:default;">The Complementarity of Good Institutions and Voluntary Cooperation: Experimental Evidence from 43 Societies</span>
-          <p class="paper-meta">With S. Gächter and C. Thöni</p>
-          <button class="abstract-toggle" onclick="toggleAbstract(this)">+ abstract</button>
-          <div class="abstract-body">We study the relationship between formal institutions and voluntary cooperation across 43 societies using a large-scale experimental design. We find evidence that good formal institutions and voluntary cooperation are complementary — societies with stronger institutions also exhibit higher baseline cooperation, and the two reinforce each other in producing public goods.</div>
+          <span class="paper-title" style="cursor:default;">Cultural Evolution in Economics</span>
+          <p class="paper-meta">With Nathan Nunn and Joseph Henrich · in preparation for <em>Annual Review of Economics</em></p>
         </div>
       </div>
 
@@ -872,12 +1125,18 @@
 
   <footer>
     <span>Jonathan F. Schulz · George Mason University · <a href="mailto:jschulz4@gmu.edu" style="color:var(--light); text-decoration:none; border-bottom:1px solid var(--rule);">jschulz4@gmu.edu</a></span>
-    <span>Updated July 2026</span>
+    <span>Updated September 2026</span>
   </footer>
 
 </main>
 
 <script data-cfasync="false" src="/cdn-cgi/scripts/5c5dd728/cloudflare-static/email-decode.min.js"></script><script>
+  function toggleFeatured(btn) {
+    const detail = btn.closest('.featured-paper').querySelector('.featured-detail');
+    const isOpen = detail.classList.toggle('open');
+    btn.textContent = isOpen ? '− what we find' : '+ what we find';
+  }
+
   function toggleAbstract(btn) {
     const body = btn.nextElementSibling;
     const isOpen = body.classList.toggle('open');
@@ -908,10 +1167,3 @@
 </html>
 
   
-
-
-
-
-
-
-
